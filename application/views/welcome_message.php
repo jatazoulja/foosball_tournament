@@ -3,7 +3,7 @@
     <div class="panel-heading">Panel heading</div>
 
     <!-- Table -->
-    <table class="table">
+    <table class="table" id="brackets">
         <thead>
         <tr>
             <th>#</th>
@@ -18,7 +18,7 @@
                 <th><?=$v['id'] . ' ' .$v['name'] ?> </th>
                 <?php
                 foreach($teams as $x) :
-                    $part = ($v['id']==$x['id']) ? 'alert alert-danger' : 'warning';
+                    $part = ($v['id']==$x['id']) ? 'alert alert-danger' : 'warning start-match';
                     $name = ($v['id']==$x['id']) ? '' : $x['name'];
                     $score = "[xx]";
                     $vs = json_encode(

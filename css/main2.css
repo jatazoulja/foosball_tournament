@@ -4,3 +4,7 @@
 .team-contaner {
     padding-top: 50px;
 }
+.team-contaner h3, .team-contaner h1, .team-contaner h2, {
+    margin-top: 0;
+    margin-bottom: 0;
+}
