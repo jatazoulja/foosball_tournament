@@ -6,7 +6,7 @@
  * Time: 8:52 AM
  */
 
-class Game extends My_controller {
+class Game extends MY_Controller {
     public function match_up($team1, $team2) {
         if($team1 == $team2) throw new Exception("can't match the same team...");
         $data["teams"] = array(
