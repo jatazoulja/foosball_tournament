@@ -46,7 +46,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">End Game</a></li>
                         <li><a class="reset-match" href="#">Reset Game</a></li>
-                        <li><a href="#"></a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Default Game</a></li>
                     </ul>
