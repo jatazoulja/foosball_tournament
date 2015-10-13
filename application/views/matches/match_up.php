@@ -26,7 +26,7 @@
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <h1 id="team-<?=$teams[0][0]["on_team"]?>" data-score="0" class="score">0</h1>
                 </div>
-                <div class="col-sm-6 col-md-4">
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     <span class="">--</span>
 
                 </div>
