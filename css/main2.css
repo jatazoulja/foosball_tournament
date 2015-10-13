@@ -1,10 +1,23 @@
 #match-container {
+    padding-top: 20px;
     background: url(../img/m_bg.png) center center no-repeat;
 }
-.team-contaner {
+. team-container {
     padding-top: 50px;
 }
-.team-contaner h3, .team-contaner h1, .team-contaner h2, {
+.team-container h3, .team-container h1, .team-container h2 {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+
+
+@media (max-width: 767px) {
+    .team-container h3, .team-container h1, .team-container h2 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
 }

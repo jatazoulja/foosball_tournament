@@ -60,9 +60,54 @@
 }());
 
 
+(function() {
+    $.fn.minusScore =function(options) {
+        var defaults = $.extend({
+
+            }, options)
+            $obj = $(this),
+            self = this;
+        $obj.on('click',".minus-score", function() {
+            var data = $(this).data(),
+                playersCont = $("#user-score-" + data.player + "-" + data.team),
+                teamCont = $("#team-" + data.team),
+                teamScore = teamCont.data().score,
+                playerScore = playersCont.data().score;
+            if(playerScore==0) return;
+            if(teamScore==0) return;
+            playersCont.data().score = playerScore-1;
+            playersCont.text(playerScore-1)
+            teamCont.data().score = teamScore-1;
+            teamCont.text(teamScore-1)
+
+        });
+    }
+}());
+(function() {
+    $.fn.resetScore =function(options) {
+        var defaults = $.extend({
+
+            }, options)
+            $obj = $(this),
+            self = this;
+        $obj.on('click',".reset-match", function(e) {
+            e.preventDefault();
+            var teamCont = $("[data-score]"),
+                teamScore = teamCont.data().score;
+
+            teamCont.data().score = 0;
+            teamCont.text(0)
+
+        });
+    }
+}());
+
+
     (function() {
     $(document).ready(function() {
         $("#brackets").startMatch({});
         $("#match-container").addScore({});
+        $("#match-container").minusScore({});
+        $("#match-container").resetScore({});
     });// Place any jQuery/helper plugins in here.
     }());// Place any jQuery/helper plugins in here.
