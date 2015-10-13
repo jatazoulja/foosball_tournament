@@ -6,7 +6,7 @@
  * Time: 7:51 AM
  */
 
-class MY_Controller extends CI_Controller {
+class My_controller extends CI_Controller {
     function __construct($true = false) {
         parent::__construct();
 
