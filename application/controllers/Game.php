@@ -18,6 +18,6 @@ class Game extends MY_Controller {
     }
 
     public function end_of_match($team1, $team2) {
-        
+
     }
 }
