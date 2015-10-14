@@ -4,7 +4,7 @@
         <tr>
             <th>#</th>
             <?php foreach($teams as $k => $v) : ?>
-                <th><?=$v['name'] ?></th>
+                <th><?=$v['id'] ?></th>
             <?php endforeach?>
         </tr>
         </thead>
@@ -13,7 +13,7 @@
             <tr>
                 <th><?=$v['id'] . ' ' .$v['name'] ?> </th>
                 <?php
-                foreach($teams as $x) :
+                foreach($teams as $d => $x) :
                     $part = ($v['id']==$x['id']) ? 'alert alert-danger' : 'warning start-match';
                     $name = ($v['id']==$x['id']) ? '' : $x['name'];
                     $score = "[xx]";
@@ -26,16 +26,16 @@
                     if($v['id']!=$x['id']) {
                         if ($in != false ) {
                             if($results[$in]['opponent_id'] == $x['id']) {
-                                $score =  "( " . $results[$in]['my_score'] . "-" . $results[$in]['opponent_score'] . " )";
-                                $part .= "success";
+                                $score =  "(" . $results[$in]['my_score'] . "-" . $results[$in]['opponent_score'] . ")";
+                                $part = "success";
                             }
                             // $score = "default";
                         }
 
                         if($out != false) {
                             if($results[$out]['opponent_id'] == $v['id']) {
-                                $score =  "( " . $results[$out]['opponent_score'] . "-" . $results[$out]['my_score']  . " )";
-                                $part .= "success";
+                                $score =  "(" . $results[$out]['opponent_score'] . "-" . $results[$out]['my_score']  . ")";
+                                $part = "success";
                             }
                         }
                     } else {
@@ -43,7 +43,7 @@
                     }
                     ?>
 
-                    <td data-vs='<?=$vs ?>' id="team-<?=$v['id']?>-<?=$x['id']?>" class="<?=$part?>"><?=$score?></td>
+                    <td  data-toggle="tooltip" data-placement="left" title="<?=$teams[$k]['name']?> vs <?=$teams[$d]['name']?>" data-vs='<?=$vs ?>' id="team-<?=$v['id']?>-<?=$x['id']?>" class="<?=$part?>"><?=$score?></td>
                 <?php endforeach;?>
             </tr>
         <?php endforeach;?>

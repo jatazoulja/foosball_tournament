@@ -24,8 +24,14 @@ class Welcome extends MY_Controller {
     {
         $data['teams'] = $this->MY_Team->get_teams();
         $data['results'] = $this->MY_Team->queryGameResults();
+        $data['team_leader'] = $this->MY_Team->get_standing_of_teams();
+        $data['player_leader'] = $this->MY_Team->get_standing_of_players();
+
         $data['feeds'] = $this->landing_page($data);
         $data['standing'] = $this->standing_board($data);
+        $data['leader'] = $this->leader_board($data);
+        $data['players'] = $this->player_board($data);
+
         $this->render('landing/main', $data);
     }
 
@@ -38,5 +44,11 @@ class Welcome extends MY_Controller {
     }
     private function standing_board($data) {
         return $this->load->view("welcome_message", $data, true);
+    }
+    private function leader_board($data) {
+        return $this->load->view("landing/leader_board", $data, true);
+    }
+    private function player_board($data) {
+        return $this->load->view("landing/player_board", $data, true);
     }
 }
