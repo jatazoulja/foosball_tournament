@@ -1,6 +1,9 @@
 <div id="main" class="row">
     <div id="feeds" class="col-sm-9">
         <?=$feeds?>
+        <div class="col-sm-12" style="overflow-x: scroll">
+            <?=$standing?>
+        </div>
     </div>
     <div id="widgets" class="col-sm-3">
 

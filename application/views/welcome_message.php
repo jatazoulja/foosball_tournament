@@ -1,8 +1,4 @@
-<div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Panel heading</div>
-
-    <!-- Table -->
     <table class="table" id="brackets">
         <thead>
         <tr>
@@ -53,10 +49,9 @@
         <?php endforeach;?>
         </tbody>
     </table>
-</div>
-</div>
+
 <pre>
     <?php
-        var_dump($results);
+        //var_dump($results);
     ?>
 </pre>

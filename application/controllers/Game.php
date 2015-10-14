@@ -9,9 +9,10 @@
 class Game extends MY_Controller {
     public function match_up($team1, $team2) {
         if($team1 == $team2) throw new Exception("can't match the same team...");
-        if($this->MY_Team->hasPlayed($team1, $team2) != 0) {
+        $hasGame = $this->MY_Team->hasPlayed($team1, $team2);
+        if($hasGame->count != 0) {
             // show game result;
-            $this->game_results($team1, $team2);
+            $this->game_results($team1, $team2, $hasGame->result);
         } else {
             $data["teams"] = array(
                 $this->MY_Team->get_teams_by_id($team1),
@@ -21,10 +22,11 @@ class Game extends MY_Controller {
             $this->render("matches/match_up", $data);
         }
     }
-    private function game_results($team1, $team2) {
+    private function game_results($team1, $team2, $obj) {
         $data = array(
             "team"
         );
+        var_dump( $obj[0]['match_id'] );
         $this->render("matches/results", $data);
 
     }

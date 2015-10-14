@@ -29,7 +29,10 @@ class MY_Team extends CI_Model
             "SELECT * FROM ( SELECT g1.id, g1.match_id, g1.team_id AS my_team_id, g2.team_id AS opponent_id, g1.score AS my_score, g2.score AS opponent_score FROM `games` as g1 LEFT JOIN `games` as g2 ON g2.match_id = g1.match_id AND g1.team_id <> g2.team_id ) as results WHERE results.opponent_id = %d AND my_team_id = %d",
             $id1, $id2
         ));
-        return $string->num_rows();
+        return (object) array(
+            "count"=> $string->num_rows(),
+            "result"=>  $string->result_array()
+        );
     }
 
     function get_teams_by_id($id) {
