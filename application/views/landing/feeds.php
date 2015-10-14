@@ -1,20 +1,37 @@
-    <div class="page-header">
-        <h1 id="timeline">Timeline</h1>
-    </div>
+<hr>
     <ul class="timeline">
-        <li>
+        <?php
+
+        foreach($results as $k => $v) :
+            $even = "";
+            if($k%2) continue;
+            if($k%4) $even = "timeline-inverted";
+            $home = array_search($v['my_team_id'], array_column($teams, 'id'));
+            $away = array_search($v['opponent_id'], array_column($teams, 'id'));
+            if($v['opponent_score'] > $v['my_score']) {
+                $lead = $v['opponent_score'] - $v['my_score'];
+                $string =  "(". $teams[$away]['name'] .") Won over " . $teams[$home]['name'] . " with " . $lead . " lead";
+            } else {
+                $lead = $v['my_score'] - $v['opponent_score'];
+                $string =  "(". $teams[$home]['name'] .") Won over " . $teams[$away]['name'] . " with " . $lead . " lead";
+            }
+
+            ?>
+
+        <li class="<?=$even?>">
             <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                    <h4 class="timeline-title"><?=$teams[$home]['name']?> went against <?=$teams[$away]['name']?> </h4>
+                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <?=$v['date']?></small></p>
                 </div>
                 <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                    <p><?=$string?></p>
                 </div>
             </div>
         </li>
-        <li class="timeline-inverted">
+        <?php endforeach; ?>
+<!--        <li class="timeline-inverted">
             <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -91,5 +108,11 @@
                     <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
                 </div>
             </div>
-        </li>
+        </li>-->
     </ul>
+<pre>
+    <?php
+   /* var_dump(array_column($teams, 'id'));
+    var_dump($teams);*/
+    ?>
+</pre>

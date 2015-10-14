@@ -2,10 +2,10 @@
     <div id="feeds" class="col-sm-9">
         <?=$feeds?>
         <div class="col-sm-12" style="overflow-x: scroll">
-            <?=$standing?>
+            <?=$timeline?>
         </div>
         <div class="col-sm-12" style="overflow-x: scroll">
-            <?=$timeline?>
+            <?=$standing?>
         </div>
 
     </div>

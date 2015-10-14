@@ -1,3 +1,9 @@
+body {
+    background: url("../img/bg_01.jpg") top no-repeat #000;
+    background-size: 100% auto;
+
+}
+
 #match-container {
     padding-top: 20px;
     background: url(../img/m_bg.png) center center no-repeat;
@@ -75,6 +81,7 @@
     padding: 20px;
     position: relative;
     -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    background-color: #FFF;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
@@ -98,7 +105,6 @@
     border-top: 14px solid transparent;
     border-left: 14px solid #fff;
     border-right: 0 solid #fff;
-    border-bottom: 14px solid transparent;
     content: " ";
 }
 
