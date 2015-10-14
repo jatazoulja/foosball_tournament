@@ -15,7 +15,10 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
+#brackets {
+    background-color: #eeeeee;
 
+}
 #brackets .success {
     font-weight: bold;
 }

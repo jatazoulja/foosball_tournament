@@ -10,10 +10,10 @@
             $away = array_search($v['opponent_id'], array_column($teams, 'id'));
             if($v['opponent_score'] > $v['my_score']) {
                 $lead = $v['opponent_score'] - $v['my_score'];
-                $string =  "(". $teams[$away]['name'] .") Won over " . $teams[$home]['name'] . " with " . $lead . " lead";
+                $string =  "(". $teams[$away]['name'] .") Won over " . $teams[$home]['name'] . " with " . $lead . " point/s lead!";
             } else {
                 $lead = $v['my_score'] - $v['opponent_score'];
-                $string =  "(". $teams[$home]['name'] .") Won over " . $teams[$away]['name'] . " with " . $lead . " lead";
+                $string =  "(". $teams[$home]['name'] .") Won over " . $teams[$away]['name'] . " with " . $lead . " point/s lead!";
             }
 
             ?>
