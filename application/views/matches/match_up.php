@@ -93,7 +93,7 @@
 </div>
 <pre>
     <?php
-    var_dump($arPlayer);
+    // var_dump($arPlayer);
 
     ?>
 </pre>
