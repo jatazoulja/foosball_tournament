@@ -31,4 +31,38 @@ class MY_Team extends CI_Model
         return $this->db->query($string)->result_array();
     }
 
+    function insertMatch($s) {
+        $created_date = date("Y-m-d H:i:s");
+        $query = $this->db->insert("matches", array(
+            'date' => date("Y-m-d H:i:s"),
+            'season' => $s
+        ));
+        return $this->db->insert_id();
+    }
+    function insertGame($match_id, $s) {
+        $data = array();
+        foreach($s as $x) {
+            $data[] = array(
+                "match_id" => $match_id,
+                "team_id" => $x['id'],
+                "score" => $x['score'],
+            );
+
+        }
+        $query = $this->db->insert_batch("games",$data);
+    }
+    function insertPlayerRecord($match_id, $s) {
+        $data = array();
+        foreach($s as $x) {
+            $data[] = array(
+                "match_id" => $match_id,
+                "player_id" => $x['id'],
+                "key" => 'score',
+                "value" => $x['score']
+            );
+
+        }
+        $query = $this->db->insert_batch("games_scoresheet",$data);
+    }
+
 }

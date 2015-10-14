@@ -22,10 +22,17 @@ class Welcome extends MY_Controller {
 	 */
     public function index()
     {
-
         $data['teams'] = $this->MY_Team->get_teams();
         $data['results'] = $this->MY_Team->queryGameResults();
-        $this->render('welcome_message', $data);
+        $data['feeds'] = $this->landing_page($data);
+        $this->render('landing/main', $data);
     }
 
+    private function landing_page($data) {
+        // latest
+        if($this->ion_auth->logged_in()) {
+            // include admin
+            return $this->load->view("landing/start_game", $data, true);
+        }
+    }
 }

@@ -28,11 +28,32 @@
             }, options)
             $obj = $(this),
             self = this;
+        function star(str) {
+
+            location.href = "/index.php/game/match_up/" + str;
+        }
         $obj.on('click',".start-match", function() {
             var data = $(this).data()
-            location.href = "/index.php/game/match_up/" + data.vs.join("/");
-            console.log(data);
+            if(data.vs[0] == data.vs[1]) {
+                alert("Can't match same team");
+                return;
+            }
+            star(data.vs.join("/"))
         });
+
+        $obj.submit(function(e) {
+            e.preventDefault();
+            var data = $(this).serializeArray(),
+                t=[];
+            $.each(data, function(i) {
+                t.push(data[i].value)
+            });
+            if(t[0] == t[1]) {
+                alert("Can't match same team");
+                return;
+            }
+            star(t.join("/"));
+        })
     }
 }());
 
@@ -101,13 +122,56 @@
         });
     }
 }());
+(function() {
+    $.fn.submitScore =function(options) {
+        var defaults = $.extend({
+
+            }, options)
+            $obj = $(this),
+            self = this;
+        $obj.on('click',".end-match", function(e) {
+            e.preventDefault();
+            var teamCont = $obj.find("[data-score]"),
+                payload = {
+                    team : [],
+                    players : []
+                }
+
+            $.each(teamCont, function() {
+                var data = $(this).data();
+                if(data.team){
+                    payload.team.push({
+                        id: data.team.on_team,
+                        score: data.score
+                    });
+                }
+                if(data.details) {
+                    payload.players.push({
+                        id: data.details.id,
+                        score: data.score
+                    });
+                }
+            })
+            $.ajax({
+                data: payload,
+                url: '/index.php/game/end_of_match',
+                method: "POST",
+                success: function(resp) {
+                    console.log(resp)
+                }
+            })
+        });
+    }
+}());
 
 
     (function() {
     $(document).ready(function() {
         $("#brackets").startMatch({});
+        $("#start-game").startMatch({});
         $("#match-container").addScore({});
         $("#match-container").minusScore({});
         $("#match-container").resetScore({});
+        $("#match-container").submitScore({});
     });// Place any jQuery/helper plugins in here.
     }());// Place any jQuery/helper plugins in here.

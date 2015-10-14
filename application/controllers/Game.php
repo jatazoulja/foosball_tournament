@@ -17,7 +17,15 @@ class Game extends MY_Controller {
         $this->render("matches/match_up", $data);
     }
 
-    public function end_of_match($team1, $team2) {
+    public function end_of_match() {
+        $post = $_POST;
+        // save match and get ID.
+        $match_record = $this->MY_Team->insertMatch(0);
+        $this->MY_Team->insertGame($match_record, $post['team']);
+        $this->MY_Team->insertPlayerRecord($match_record, $post['players']);
 
+        echo json_encode(array(
+           "match_id" => $match_record
+        ));
     }
 }
