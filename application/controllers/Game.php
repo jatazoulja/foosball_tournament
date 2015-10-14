@@ -32,6 +32,13 @@ class Game extends MY_Controller {
     }
     public function end_of_match() {
         $post = $_POST;
+        $hasGame = $this->MY_Team->hasPlayed($post['team'][0]['id'], $post['team'][1]['id']);
+        if($hasGame->count != 0) {
+            echo json_encode(array(
+                "code" => 420,
+                "message" => "Addict! tapost na to!"
+            )); // $this->game_results($team1, $team2, $hasGame->result);
+        }
         // save match and get ID.
         $match_record = $this->MY_Team->insertMatch(0);
         $this->MY_Team->insertGame($match_record, $post['team']);
