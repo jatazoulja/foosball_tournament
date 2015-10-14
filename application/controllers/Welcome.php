@@ -27,6 +27,7 @@ class Welcome extends MY_Controller {
         $data['team_leader'] = $this->MY_Team->get_standing_of_teams();
         $data['player_leader'] = $this->MY_Team->get_standing_of_players();
 
+        $data['timeline'] = $this->landing_page_timeline($data);
         $data['feeds'] = $this->landing_page($data);
         $data['standing'] = $this->standing_board($data);
         $data['leader'] = $this->leader_board($data);
@@ -41,6 +42,10 @@ class Welcome extends MY_Controller {
             // include admin
             return $this->load->view("landing/start_game", $data, true);
         }
+    }
+    private function landing_page_timeline($data) {
+        // latest
+        return $this->load->view("landing/feeds", $data, true);
     }
     private function standing_board($data) {
         return $this->load->view("welcome_message", $data, true);

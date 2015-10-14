@@ -1,3 +1,17 @@
+SELECT
+  g1.id,
+  g1.match_id,
+  g1.team_id AS my_team_id,
+  g2.team_id AS opponent_id,
+  g1.score AS my_score,
+  g2.score AS opponent_score,
+  m.date
+FROM `games` as g1
+  LEFT JOIN `games` as g2
+    ON g2.match_id = g1.match_id AND g1.team_id <> g2.team_id
+  LEFT JOIN matches as m
+  ON m.id = g1.match_id;
+
 -- SELECTING THE BEST TEAM...
 
 SELECT
@@ -20,7 +34,7 @@ FROM (
      ) AS results
 LEFT JOIN `team` as t
   ON t.id = results.my_team_id
-GROUP BY results.my_team_id ORDER BY win DESC
+GROUP BY results.my_team_id ORDER BY win DESC;
 
 
 -- SELECTING THE BEST PLAYER

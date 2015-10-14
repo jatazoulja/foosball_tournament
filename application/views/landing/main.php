@@ -4,6 +4,10 @@
         <div class="col-sm-12" style="overflow-x: scroll">
             <?=$standing?>
         </div>
+        <div class="col-sm-12" style="overflow-x: scroll">
+            <?=$timeline?>
+        </div>
+
     </div>
     <div id="widgets" class="col-sm-3">
         <div class="panel panel-default">
