@@ -17,7 +17,7 @@ class MY_Team extends CI_Model
 
     function queryGameResults() {
         $data = $this->db->query(
-            'SELECT g1.id, g1.match_id, g1.team_id AS my_team_id, g2.team_id AS opponent_id, g1.score AS my_score, g2.score AS opponent_score, m.date FROM `games` as g1 LEFT JOIN `games` as g2 ON g2.match_id = g1.match_id AND g1.team_id <> g2.team_id LEFT JOIN matches as m ON m.id = g1.match_id ORDER BY m.date'
+            'SELECT g1.id, g1.match_id, g1.team_id AS my_team_id, g2.team_id AS opponent_id, g1.score AS my_score, g2.score AS opponent_score, m.date FROM `games` as g1 LEFT JOIN `games` as g2 ON g2.match_id = g1.match_id AND g1.team_id <> g2.team_id LEFT JOIN matches as m ON m.id = g1.match_id ORDER BY m.date DESC'
         );
         $games =$data->result_array();
         foreach($data->result_array() as $d) {

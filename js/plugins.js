@@ -1,4 +1,42 @@
 // Avoid `console` errors in browsers that lack a console.
+function DateParse(date) {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ],
+        month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ],
+        parsedDate = '',
+        date = new Date(date),
+        today = new Date();
+
+    function formatDate(fdate) {
+        var fDay = fdate.getDay(),
+            fMonth = fdate.getMonth(),
+            fYear = fdate.getFullYear();
+        return month[fMonth] +  " " + fDay + " " + fYear;
+    }
+    var theDate = formatDate(date);
+    switch (true) {
+        // is today? return time
+        case (theDate == formatDate(today)):
+            parsedDate = 'Today at ' + date.getHours()+':'+date.getMinutes();
+            break;
+        // get yesterday
+        case (date.getDate() == today.getDate() - 1):
+            parsedDate = 'Yesterday at ' + date.getHours()+':'+date.getMinutes();
+            break;
+        // is this year?
+        case (theDate.indexOf(today.getFullYear()) !== -1):
+            parsedDate = theDate.replace(today.getFullYear(), '');
+            break;
+        default:
+            parsedDate = theDate;
+    }
+
+    return parsedDate
+}
+
 (function() {
     var method;
     var noop = function () {};
@@ -80,6 +118,23 @@
     }
 }());
 
+(function() {
+    $.fn.timeline =function(options) {
+        var defaults = $.extend({
+
+            }, options)
+            $obj = $(this),
+            self = this,
+            dateCont = $obj.find('.date-played');
+        $.each(dateCont, function() {
+            var converttime = $(this).text(),
+                test = new Date(converttime);
+            $(this).text(DateParse(test.getTime()));
+        })
+
+    }
+}());
+
 
 (function() {
     $.fn.minusScore =function(options) {
@@ -157,6 +212,9 @@
                 url: '/index.php/game/end_of_match',
                 method: "POST",
                 success: function(resp) {
+                    if(resp.match || resp.indexOf('match_id') != -1) {
+                        location.href = '/index.php';
+                    }
                     console.log(resp)
                 }
             })
@@ -173,5 +231,7 @@
         $("#match-container").minusScore({});
         $("#match-container").resetScore({});
         $("#match-container").submitScore({});
+        $("#match-container").submitScore({});
+        $("#feeds").timeline({});
     });// Place any jQuery/helper plugins in here.
     }());// Place any jQuery/helper plugins in here.
