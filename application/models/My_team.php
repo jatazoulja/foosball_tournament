@@ -85,7 +85,7 @@ class MY_Team extends CI_Model
 
         }
         $query = $this->db->insert_batch("games_scoresheet",$data);
-        var_dump($query);
+        // var_dump($query);
     }
 
 }
