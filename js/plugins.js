@@ -121,16 +121,16 @@ function DateParse(date) {
 (function() {
     $.fn.timeline =function(options) {
         var defaults = $.extend({
-
             }, options)
-            $obj = $(this),
+            timeline = $(this),
             self = this,
-            dateCont = $obj.find('.date-played');
+            dateCont = timeline.find('.date-played');
+
         $.each(dateCont, function() {
             var converttime = $(this).text(),
                 test = new Date(converttime);
             $(this).text(DateParse(test.getTime()));
-        })
+        });
 
     }
 }());
@@ -182,11 +182,11 @@ function DateParse(date) {
         var defaults = $.extend({
 
             }, options)
-            $obj = $(this),
+            $obj2 = $(this),
             self = this;
-        $obj.on('click',".end-match", function(e) {
+        $obj2.on('click',".end-match", function(e) {
             e.preventDefault();
-            var teamCont = $obj.find("[data-score]"),
+            var teamCont = $obj2.find("[data-score]"),
                 payload = {
                     team : [],
                     players : []
@@ -206,7 +206,7 @@ function DateParse(date) {
                         score: data.score
                     });
                 }
-            })
+            });
             $.ajax({
                 data: payload,
                 url: '/index.php/game/end_of_match',
@@ -230,7 +230,6 @@ function DateParse(date) {
         $("#match-container").addScore({});
         $("#match-container").minusScore({});
         $("#match-container").resetScore({});
-        $("#match-container").submitScore({});
         $("#match-container").submitScore({});
         $("#feeds").timeline({});
     });// Place any jQuery/helper plugins in here.

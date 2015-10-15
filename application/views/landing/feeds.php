@@ -8,7 +8,25 @@
             if($k%4) $even = "timeline-inverted";
             $home = array_search($v['my_team_id'], array_column($teams, 'id'));
             $away = array_search($v['opponent_id'], array_column($teams, 'id'));
+            $labset = array(
+                'badge' => '',
+                'class' => 'glyphicon glyphicon-check',
+                'announce' => ''
+            );
+            if($v['opponent_score'] == 0 ||  $v['my_score'] == 0) {
+                $labset['badge'] = 'danger';
+                $labset['class'] = 'glyphicon glyphicon-fire';
+                if($v['opponent_score']==0) $labset['announce'] = $teams[$away]['name'] . ' are on killing SPREE!!!';
+                if($v['my_score']==0) $labset['announce'] = $teams[$home]['name'] . ' has been OWNED!';
+
+            }
+            if($v['opponent_score'] > 10 ||  $v['my_score'] > 10) {
+                $labset['badge'] = 'info';
+                $labset['class'] = 'glyphicon-exclamation-sign';
+                $labset['announce'] = 'IN OVERTIME!!';
+            }
             if($v['opponent_score'] > $v['my_score']) {
+
                 $lead = $v['opponent_score'] - $v['my_score'];
                 $string =  "(". $teams[$away]['name'] .") Won over " . $teams[$home]['name'] . " with " . $lead . " point/s lead!";
             } else {
@@ -19,11 +37,12 @@
             ?>
 
         <li class="<?=$even?>">
-            <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+            <div class="timeline-badge <?=$labset['badge']?>""><i class="<?=$labset['class']?>"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
                     <h4 class="timeline-title"><?=$teams[$home]['name']?> went against <?=$teams[$away]['name']?> </h4>
                     <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <span class="date-played"><?=$v['date']?></span></small></p>
+                    <p><?=$labset['announce']?></p>
                 </div>
                 <div class="timeline-body">
                     <p><?=$string?></p>
@@ -32,7 +51,7 @@
         </li>
         <?php endforeach; ?>
 <!--        <li class="timeline-inverted">
-            <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+            <div class="timeline-badge warning"><i class="glyphicon glyphicon-fire-card"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
                     <h4 class="timeline-title">Mussum ipsum cacilds</h4>
