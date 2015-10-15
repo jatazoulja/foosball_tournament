@@ -1,4 +1,5 @@
-    <!-- Default panel contents -->
+    <h3>Standing:</h3>
+    <hr>
     <table class="table" id="brackets">
         <thead>
         <tr>
@@ -27,6 +28,7 @@
                         if ($in != false ) {
                             if($results[$in]['opponent_id'] == $x['id']) {
                                 $score =  "(" . $results[$in]['my_score'] . "-" . $results[$in]['opponent_score'] . ")";
+
                                 $part = "success";
                             }
                             // $score = "default";
