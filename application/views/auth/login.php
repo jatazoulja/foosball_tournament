@@ -1,4 +1,5 @@
-<h1><?php echo lang('login_heading');?></h1>
+<div class="col-sm-8 white-bg">
+    <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>

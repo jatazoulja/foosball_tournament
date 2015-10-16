@@ -1,4 +1,5 @@
-<h1><?php echo lang('deactivate_heading');?></h1>
+<div class="col-sm-8 white-bg">
+    <h1><?php echo lang('deactivate_heading');?></h1>
 <p><?php echo sprintf(lang('deactivate_subheading'), $user->username);?></p>
 
 <?php echo form_open("auth/deactivate/".$user->id);?>
@@ -15,4 +16,4 @@
 
   <p><?php echo form_submit('submit', lang('deactivate_submit_btn'));?></p>
 
-<?php echo form_close();?>
+<?php echo form_close();?></div>

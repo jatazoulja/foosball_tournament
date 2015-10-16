@@ -36,6 +36,11 @@ class Welcome extends MY_Controller {
         $this->render('landing/main', $data);
     }
 
+    public function rules()
+    {
+        $this->render('landing/rules', array());
+    }
+
     private function landing_page($data) {
         // latest
         if($this->ion_auth->logged_in()) {

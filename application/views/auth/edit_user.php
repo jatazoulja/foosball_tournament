@@ -1,4 +1,5 @@
-<h1><?php echo lang('edit_user_heading');?></h1>
+<div class="col-sm-8 white-bg">
+    <h1><?php echo lang('edit_user_heading');?></h1>
 <p><?php echo lang('edit_user_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -64,3 +65,4 @@
       <p><?php echo form_submit('submit', lang('edit_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+</div>

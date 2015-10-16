@@ -1,4 +1,5 @@
-<h1><?php echo lang('create_user_heading');?></h1>
+<div class="col-sm-8 white-bg">
+    <h1><?php echo lang('create_user_heading');?></h1>
 <p><?php echo lang('create_user_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -55,3 +56,4 @@
       <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+</div>

@@ -1,4 +1,5 @@
-<h1><?php echo lang('forgot_password_heading');?></h1>
+<div class="col-sm-8 white-bg">
+    <h1><?php echo lang('forgot_password_heading');?></h1>
 <p><?php echo sprintf(lang('forgot_password_subheading'), $identity_label);?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -12,4 +13,4 @@
 
       <p><?php echo form_submit('submit', lang('forgot_password_submit_btn'));?></p>
 
-<?php echo form_close();?>
+<?php echo form_close();?></div>

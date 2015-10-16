@@ -1,5 +1,5 @@
-<div class="container">
-    <h1><?php echo lang('change_password_heading');?></h1>
+<div class="col-sm-8 white-bg">
+<h1><?php echo lang('change_password_heading');?></h1>
 
 <div id="infoMessage"><?php echo $message;?></div>
 
