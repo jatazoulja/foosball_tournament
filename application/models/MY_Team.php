@@ -89,4 +89,13 @@ class MY_Team extends CI_Model
         // var_dump($query);
     }
 
+    function get_team_details($id) {
+    // SELECT * FROM ( SELECT player_id, u.first_name, SUM(`value`) AS total, MAX(`value`) AS career, AVG(`value`) AS ave, t.team_id AS my_team_id FROM `games_scoresheet` AS gs LEFT JOIN users AS u ON u.id = gs.player_id LEFT JOIN team_players AS t ON u.id = t.user_id WHERE `key` = 'score' GROUP BY `player_id` ORDER BY total DESC LIMIT 5) AS tt WHERE TT.my_team_id = %d
+        $string = sprintf(
+            "SELECT * FROM ( SELECT player_id, u.first_name, SUM(`value`) AS total, MAX(`value`) AS career, AVG(`value`) AS ave, count(`player_id`) as tgame, t.team_id AS my_team_id FROM `games_scoresheet` AS gs LEFT JOIN users AS u ON u.id = gs.player_id LEFT JOIN team_players AS t ON u.id = t.user_id WHERE `key` = 'score' GROUP BY `player_id` ORDER BY total DESC LIMIT 5) AS tt WHERE TT.my_team_id =  %d",
+            $id
+        );
+        return $this->db->query($string)->result_array();
+    }
+
 }

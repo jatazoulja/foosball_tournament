@@ -12,7 +12,11 @@
         <tbody>
         <?php foreach($teams as $k => $v) : ?>
             <tr>
-                <th><?=$v['id'] . ' ' .$v['name'] ?> </th>
+                <th>
+                    <a href="/team/id/<?=$v['id']?>">
+                        <?=$v['id'] . ' ' .$v['name'] ?>
+                    </a>
+                </th>
                 <?php
                 foreach($teams as $d => $x) :
                     $part = ($v['id']==$x['id']) ? 'alert alert-danger' : 'warning start-match';
