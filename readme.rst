@@ -9,12 +9,12 @@ Currently in BETA phase, Foosball app is a tournament scoring system that brings
 TODO
 *******************
 - `Team Management`
--- `Create Team`
--- `Manage Team`
--- `Random team`
+    #. `Create Team`
+    #. `Manage Team`
+    #. `Random team`
 
 - `Tournament Management`
--- `Create Tournament`
--- `Manage Tournament`
--- `Random Tournament`
--- `User Registration per Tournmanent.`
+    #. `Create Tournament`
+    #. `Manage Tournament`
+    #. `Random Tournament`
+    #. `User Registration per Tournmanent.`
