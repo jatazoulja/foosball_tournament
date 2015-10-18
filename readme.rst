@@ -18,3 +18,8 @@ TODO
     #. `Manage Tournament`
     #. `Random Tournament`
     #. `User Registration per Tournmanent.`
+
+*******************
+DEMO
+*******************
+`Demo can be found here: <http://jatazoulja.xyz//>`_
