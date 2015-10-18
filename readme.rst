@@ -23,3 +23,12 @@ TODO
 DEMO
 *******************
 `Demo can be found here: <http://jatazoulja.xyz//>`_
+
+*******************
+Special thanks to: (What I used...)
+*******************
+* `Codeigniter <https://codeigniter.com>`_
+* `jQuery <https://jquery.com/>`_
+* `Bootstrap <http://getbootstrap.com>`_
+* `Ion_auth <benedmunds.com/ion_auth/>`_
+* `Every programmer should thank this guys! <http://stackoverflow.com/>`_
